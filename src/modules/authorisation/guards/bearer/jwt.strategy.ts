@@ -2,7 +2,6 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { Injectable } from '@nestjs/common';
 import { UserAccessTokenContextDto } from '../dto/user-access-token-context.dto';
-import { envConfig } from '../../../../config_old';
 import { ConfigService } from '@nestjs/config';
 import { AppConfig } from '../../../../core/app.config';
 
