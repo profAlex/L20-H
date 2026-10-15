@@ -55,7 +55,7 @@ export class CommentsController {
     // return comment view by comment ID
     @ApiOperation({ summary: 'Get comment specified by id' })
     @ApiParam({ name: 'id' })
-    // @UseGuards(JwtOptionalAuthGuard)
+    @UseGuards(JwtOptionalAuthGuard)
     @Get(':id')
     async getCommentById(
         @Param('id') commentId: string,

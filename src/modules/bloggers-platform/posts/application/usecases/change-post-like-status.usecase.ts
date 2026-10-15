@@ -49,7 +49,7 @@ export class ChangePostLikeStatusHandler implements ICommandHandler<ChangePostLi
                 postId, userId
             );
 
-        console.warn('<---- currentLikeStatus value is: ', currentLikeStatus);
+        // console.warn('<---- currentLikeStatus value is: ', currentLikeStatus);
 
 
         // НАЧАЛО ПРОВЕРОК

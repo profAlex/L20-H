@@ -19,27 +19,27 @@ export type CounterDirection = 1 | -1;
 @Injectable()
 export class CommentLikesCommandRepository {
     constructor(
-        @InjectModel(CommentLike.name)
-        private CommentLikeModel: CommentLikeModelType,
+        // @InjectModel(CommentLike.name)
+        // private CommentLikeModel: CommentLikeModelType,
         private readonly dataSource: DataSource,
     ) {}
 
-    async save(commentLike: CommentLikeDocument): Promise<void> {
-        await commentLike.save();
-    }
-
-    async findSingleCommentLikeByCommentIdAndUserId({
-        commentId,
-        userId,
-    }: {
-        commentId: string;
-        userId: string;
-    }): Promise<CommentLikeDocument | null> {
-        return this.CommentLikeModel.findOne({
-            commentId,
-            userId,
-        });
-    }
+    // async save(commentLike: CommentLikeDocument): Promise<void> {
+    //     await commentLike.save();
+    // }
+    //
+    // async findSingleCommentLikeByCommentIdAndUserId({
+    //     commentId,
+    //     userId,
+    // }: {
+    //     commentId: string;
+    //     userId: string;
+    // }): Promise<CommentLikeDocument | null> {
+    //     return this.CommentLikeModel.findOne({
+    //         commentId,
+    //         userId,
+    //     });
+    // }
 
     async SQLupdateLikeStatus(
         commentId: string,

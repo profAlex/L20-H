@@ -23,7 +23,7 @@ export class ChangeCommentLikeStatus extends Command<void> {
 @CommandHandler(ChangeCommentLikeStatus)
 export class ChangeCommentLikeStatusHandler implements ICommandHandler<ChangeCommentLikeStatus> {
     constructor(
-        @InjectModel(CommentLike.name)
+        // @InjectModel(CommentLike.name)
         private commentLikesCommandRepository: CommentLikesCommandRepository,
         private commentsCommandRepository: CommentsCommandRepository,
     ) {}
@@ -62,12 +62,14 @@ export class ChangeCommentLikeStatusHandler implements ICommandHandler<ChangeCom
                     userId,
                 },
             );
+
+        console.warn('<---- currentLikeStatus value is: ', currentLikeStatus);
         // *********************
 
         // НАЧАЛО ПРОВЕРОК
-        // если прежней реакции не найдено и новая реакция не None, значит реакция добавляется впервые
+        // если прежней реакции не найдено (null или 'None') и новая реакция не None, значит реакция добавляется впервые
         // и надо будет просто увеличить счетчик лайков или дислайков и добавить новую запись в
-        if (currentLikeStatus === null && newLikeStatus !== 'None') {
+        if ((currentLikeStatus === null || currentLikeStatus === 'None') && newLikeStatus !== 'None') {
             // создаем новый лайк в базе
             await this.commentLikesCommandRepository.SQLupdateLikeStatus(commentId, userId, newLikeStatus);
 
